@@ -200,8 +200,7 @@ const age = {
 const scale_sex = [
     "<p class='scale_text'>女性",
     "<p class='scale_text'>男性",
-    "<p class='scale_text'>どちらでもない",
-    "<p class='scale_text'>無回答"
+    "<p class='scale_text'>どちらでもない"
 ];
 
 const biol_sex = {
@@ -219,7 +218,7 @@ const biol_sex = {
         data.participantID = participantID;
         data.timing = "biol_sex";
         data.time = time;
-        data.biol_sex = data.response.biol_sex; // 0=f, 1=m, 2=neither, 3=noResponse
+        data.biol_sex = data.response.biol_sex; // 0=f, 1=m, 2=neither
     }
 };
 
@@ -322,8 +321,6 @@ const JOPS_trait = {
         let text;
         text = "<p class='inst_text'>下に呈示する項目が，<b><u>普段の";
         text += "自分</b></u>にどの程度当てはまるか，5段階から選んでお答えください。<br>";
-        text += "各項目について，それより前の項目のことは考えず，その項目一つに対する感覚に基づいて，";
-        text += "できる限り正確に答えるようにしてください。<br>";
         return text;
     },
     questions: [
@@ -380,6 +377,29 @@ const JOPS_trait = {
     }
 };
 
+let JOPS_qs_state = [
+    "<p class='scale_text'>自分の将来は、恵まれていると思う",
+    "<p class='scale_text'>自分の将来は、良いことが起こると思う",
+    "<p class='scale_text'>自分の将来に期待が持てる",
+    "<p class='scale_text'>自分の将来を楽しみにしている",
+    "<p class='scale_text'>これからの人生は良いものになるだろうと思う",
+    //"<p class='scale_text'>結果が予想できない時は、良い方向に期待する",
+    "<p class='scale_text'>私は将来に対して、前向きに考えている",
+    "<p class='scale_text'>私には、悪いことよりも良いことが起こると思う",
+    //"<p class='scale_text'>何かに取りかかる時は、成功するだろうと考える",
+    "<p class='scale_text'>将来、幸せになれると思う",
+    //"<p class='scale_text'>何かに取りかかる時は、失敗するだろうと考える",
+    "<p class='scale_text'>何をしても、うまくいかないことばかりを想像する",
+    //"<p class='scale_text'>何かを計画する時、失敗している自分の姿が頭に浮かぶ",
+    "<p class='scale_text'>今後のことを考えると、悪いことばかりが頭に浮かぶ",
+    "<p class='scale_text'>望ましくない、未来の自分の姿ばかりを想像する",
+    "<p class='scale_text'>私の将来は、暗いと思う",
+    "<p class='scale_text'>自分の将来に絶望している",
+    "<p class='scale_text'>結局、自分の目標は達成できないだろう",
+    "<p class='scale_text'>何もかもが悪い方向にしか進まないだろうと思う",
+    "<p class='scale_text'>私の望みはかなわないと思う"
+];
+
 // state optimism/pessimism
 const JOPS_state = {
     type: jsPsychSurveyLikert,
@@ -392,26 +412,22 @@ const JOPS_state = {
         return text;
     },
     questions: [
-      {prompt: JOPS_qs[0], name: 'jops_s_1', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[1], name: 'jops_s_2', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[2], name: 'jops_s_3', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[3], name: 'jops_s_4', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[4], name: 'jops_s_5', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[5], name: 'jops_s_6', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[6], name: 'jops_s_7', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[7], name: 'jops_s_8', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[8], name: 'jops_s_9', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[9], name: 'jops_s_10', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[10], name: 'jops_s_11', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[11], name: 'jops_s_12', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[12], name: 'jops_s_13', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[13], name: 'jops_s_14', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[14], name: 'jops_s_15', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[15], name: 'jops_s_16', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[16], name: 'jops_s_17', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[17], name: 'jops_s_18', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[18], name: 'jops_s_19', labels: scale_JOPS, required: true},
-      {prompt: JOPS_qs[19], name: 'jops_s_20', labels: scale_JOPS, required: true}
+      {prompt: JOPS_qs_state[0], name: 'jops_s_1', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[1], name: 'jops_s_2', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[2], name: 'jops_s_3', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[3], name: 'jops_s_4', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[4], name: 'jops_s_5', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[5], name: 'jops_s_6', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[6], name: 'jops_s_7', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[7], name: 'jops_s_8', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[8], name: 'jops_s_9', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[9], name: 'jops_s_10', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[10], name: 'jops_s_11', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[11], name: 'jops_s_12', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[12], name: 'jops_s_13', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[13], name: 'jops_s_14', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[14], name: 'jops_s_15', labels: scale_JOPS, required: true},
+      {prompt: JOPS_qs_state[15], name: 'jops_s_16', labels: scale_JOPS, required: true}
     ],
     button_label: '次へ',
     randomize_question_order: true,
@@ -429,19 +445,15 @@ const JOPS_state = {
         data.optS6 = Number(data.response.jops_s_6) + 1;
         data.optS7 = Number(data.response.jops_s_7) + 1;
         data.optS8 = Number(data.response.jops_s_8) + 1;
-        data.optS9 = Number(data.response.jops_s_9) + 1;
-        data.optS10 = Number(data.response.jops_s_10) + 1;
         // (state) pessimism
-        data.pesS1 = Number(data.response.jops_s_11) + 1;
-        data.pesS2 = Number(data.response.jops_s_12) + 1;
-        data.pesS3 = Number(data.response.jops_s_13) + 1;
-        data.pesS4 = Number(data.response.jops_s_14) + 1;
-        data.pesS5 = Number(data.response.jops_s_15) + 1;
-        data.pesS6 = Number(data.response.jops_s_16) + 1;
-        data.pesS7 = Number(data.response.jops_s_17) + 1;
-        data.pesS8 = Number(data.response.jops_s_18) + 1;
-        data.pesS9 = Number(data.response.jops_s_19) + 1;
-        data.pesS10 = Number(data.response.jops_s_20) + 1;
+        data.pesS1 = Number(data.response.jops_s_9) + 1;
+        data.pesS2 = Number(data.response.jops_s_10) + 1;
+        data.pesS3 = Number(data.response.jops_s_11) + 1;
+        data.pesS4 = Number(data.response.jops_s_12) + 1;
+        data.pesS5 = Number(data.response.jops_s_13) + 1;
+        data.pesS6 = Number(data.response.jops_s_14) + 1;
+        data.pesS7 = Number(data.response.jops_s_15) + 1;
+        data.pesS8 = Number(data.response.jops_s_16) + 1;
     }
 };
 
@@ -1027,7 +1039,7 @@ const actual_base_rate = {
             bad_tIdx += 1;
         };
         text = `<p class="event">【${event_list[tIdx_bu-1]}】<br><br>`;
-        text += `実際に一般に経験する可能性は <b><u>${true_BR}</b>%</u> です。`;
+        text += `実際に一般に人生で一度でも経験する可能性は <b><u>${true_BR}</b>%</u> です。`;
         text += "<br><br>確認できたらスペースキーを押してください。";
         text += `<p class='upper_left'>イベント <b>${tIdx_bu}</b> / ${tn_bu}</p>`;
         convert_success = 0; // reset
@@ -1045,7 +1057,7 @@ const actual_base_rate_prac = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: function() {
         text = `<p class="event">【${event_list_prac[tIdx_prac-1]}】<br><br>`;
-        text += `実際に一般に経験する可能性は <b><u>${BR_prac[tIdx_prac-1]}</b>%</u> です。`;
+        text += `実際に一般に人生で一度でも経験する可能性は <b><u>${BR_prac[tIdx_prac-1]}</b>%</u> です。`;
         text += "<br><br>確認できたらスペースキーを押してください。";
         return text; 
     },
@@ -1058,7 +1070,7 @@ const actual_base_rate_second = {
     stimulus: function() {
         let text;
         text = `<p class="event">【${event_list[tIdx_bu-1]}】<br><br>`;
-        text += `実際に一般に経験する可能性は <b><u>${true_BR_list[tIdx_bu-1]}</b>%</u> です。`;
+        text += `実際に一般に人生で一度でも経験する可能性は <b><u>${true_BR_list[tIdx_bu-1]}</b>%</u> です。`;
         text += "<br><br>確認できたらスペースキーを押してください。</p>";
         text += `<p class='upper_left'>イベント <b>${tIdx_bu}</b> / ${tn_bu}</p>`;
         return text;
@@ -1072,7 +1084,7 @@ const actual_base_rate_second_prac = {
     stimulus: function() {
         let text;
         text = `<p class="event">【${event_list_prac[tIdx_prac-1]}】<br><br>`;
-        text += `実際に一般に経験する可能性は <b><u>${BR_prac[tIdx_prac-1]}</b>%</u> です。`;
+        text += `実際に一般に人生で一度でも経験する可能性は <b><u>${BR_prac[tIdx_prac-1]}</b>%</u> です。`;
         text += "<br><br>確認できたらスペースキーを押してください。</p>";
         return text;
     },
@@ -1328,9 +1340,8 @@ const end_exp = {
         let text;
         text = `<p class='inst_text'>これで${time+1}回目の実験は終了です。大変お疲れさまでした。<br>`;
         text += "それでは最後に，データを転送していただきます。<br>";
-        text += "スペースキーを押して，文字が再度出てくるまでしばらくお待ちください。<br>";
-        text += "見えにくいですが，転送中は灰色のローディングマークが中央で回っています。<br>";
-        text += "通常は30秒ほどでデータ転送が完了します。</p>";
+        text += "スペースキーを押して，次の日本語の案内が再度出てくるまでしばらくお待ちください。<br>";
+        text += "通常は30秒以下でデータ転送が完了します。</p>";
         return text;
     },
     choices: [" "]
